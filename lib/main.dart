@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newsapi/NewsDescriptionPage.dart';
 import 'package:newsapi/model/Article.dart';
 import 'package:newsapi/service/api_service.dart';
 import 'package:newsapi/widgets/NewsCardWidgets.dart';
@@ -44,7 +45,16 @@ class _MyHomePageState extends State<MyHomePage> {
             return ListView.builder(
               itemCount: snapshot.data!.length,
                 itemBuilder: (BuildContext context, index){
-                  return NewsCardWidgets(article: snapshot.data![index]);
+                  return InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context) => NewsDescriptionPage(data: snapshot.data![index]))
+                      );
+                    },
+                      child: NewsCardWidgets(
+                          article: snapshot.data![index]
+                      )
+                  );
               }
             );
           }
