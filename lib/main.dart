@@ -43,10 +43,11 @@ class _MyHomePageState extends State<MyHomePage> {
             return ListView.builder(
               itemCount: snapshot.data!.length,
                 itemBuilder: (BuildContext context, index){
+                var data = snapshot.data![index];
                   return ListTile(
-                    title: Text('${snapshot.data![index].title}'),
-                    subtitle: Text('${snapshot.data![index].description}'),
-                    trailing: Image.network('${snapshot.data![index].urlToImage}'),
+                    title: Text('${data.title}'),
+                    subtitle: Text('${data.description}'),
+                    trailing: Image.network('${data.urlToImage}'),
                   );
               }
             );
