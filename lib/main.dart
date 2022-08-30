@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newsapi/model/Article.dart';
 import 'package:newsapi/service/api_service.dart';
+import 'package:newsapi/widgets/NewsCardWidgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,12 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
             return ListView.builder(
               itemCount: snapshot.data!.length,
                 itemBuilder: (BuildContext context, index){
-                var data = snapshot.data![index];
-                  return ListTile(
-                    title: Text('${data.title}'),
-                    subtitle: Text('${data.description}'),
-                    trailing: Image.network('${data.urlToImage}'),
-                  );
+                  return NewsCardWidgets(article: snapshot.data![index]);
               }
             );
           }
